@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ title }} - image</title>
+</head>
+<body>
+    <form method="GET" action="http://localhost:5000/image">
+        Entre com os dados separados por espaço, ex: 12 45 46.7 22.3<br>
+        <textarea id="inputData" style="width:100%;height:200px"></textarea><br>
+        Limite inferior: <input type="text" id="inputLi" style="width:5%;"> Amplitude classe: <input type="text" id="inputAmpClasse" style="width:5%;"><br>   
+        <input type="submit" id="btnCalcular" value="Calcular">
+    </form>
+</body>
+</html>
