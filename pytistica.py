@@ -9,7 +9,7 @@ ampClasse = 0
 Li = 0
 
 while True:
-    print("ESTATISTICA - HISTOGRAMA")
+    print("PYTISTICA - TAB FREQ, HISTOGRAMA, OGIVAS E MUITA DIVERSAO")
     print("[I] Inserir dados brutos")
     print("[A] Calcular") 
     print("[Q] Sair")
