@@ -13,7 +13,7 @@ pip install terminaltables
 https://matplotlib.org/
 pip install matplotlib
 
-ii. Rode: python pystistica.py
+ii. Rode: python console.py
 
 -> Opcao "I" - Insira os dados brutos
 
