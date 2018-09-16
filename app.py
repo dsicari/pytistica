@@ -47,7 +47,7 @@ def result():
             pystt = Pytistica()      
             import matplotlib.pyplot as plt
             pystt.Calcular(result["DadosBrutos"], int(result["LimiteInferior"]), int(result["AmplitudeClasse"]))
-            pystt.MontarTabelaFrequencia            
+            pystt.MontarTabelaFrequencia()            
             # Plota grafico
             x = []
             for li in pystt.ClasseLi:
@@ -77,7 +77,8 @@ def result():
             plt.close('all')            
 
             dataParsedForTable = list(pystt.Chunks(pystt.Data, 5))            
-            logger.debug(dataParsedForTable)
+            logger.debug("Data for table: " + str(dataParsedForTable))
+            logger.debug("DataPlot: " + str(pystt.DataPlot))
             return render_template("result.html",
                                     limiteInferior = pystt.Li,
                                     amplitudeClasse = pystt.AmpClasse, 
@@ -85,7 +86,7 @@ def result():
                                     dataParsedForTable = dataParsedForTable,
                                     dataPlot = pystt.DataPlot, 
                                     imgPlot=figdata_png.decode('utf8'))
-        except Exception, e:
+        except Exception as e:
             logger.debug("Unexpected error:")
             logger.debug(traceback.format_exc())
             logger.debug(e)

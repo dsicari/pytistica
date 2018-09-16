@@ -65,10 +65,15 @@ class Pytistica:
         bruto = bruto.replace('\r',' ')
         bruto = bruto.replace('\n','')
         bruto = bruto.replace('\t','')
-        bruto = bruto.split(' ')
         self.Data = []
+        print('Dados brutos capturados: ' + bruto)
         for b in bruto:         
-            self.Data.append(float(b))
+            if(b != ' '):
+                try:
+                    self.Data.append(float(b))
+                except:
+                    print('Fail to convert str to float')
+                    print('Str: {' + b +'}')
 
         self.N = len(self.Data)
         self.Li = li
