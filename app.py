@@ -39,56 +39,50 @@ def home():
 @app.route('/result', methods = ['POST'])
 #@nocache # Para nao utilizar cache
 def result(): 
-      if request.method == 'POST':
-            try:
-                  result = request.form   
-                  pystt = Pytistica()      
-                  pystt.Calcular(result["DadosBrutos"], int(result["LimiteInferior"]), int(result["AmplitudeClasse"]))
-                  pystt.MontarTabelaFrequencia()
-
-                  # Plota grafico
-                  x = []
-                  for li in pystt.ClasseLi:
-                        x.append(li)
-                  
-                  plt.subplot(2, 1, 1)
-                  #plt.title('Pytistica') 
-                  plt.ylabel('Histograma')        
-                  plt.bar(x, pystt.Fi, align='edge', color='blue', edgecolor='black', linewidth=1.1, alpha=0.5, width=pystt.AmpClasse)
-                  plt.plot(pystt.Pm, pystt.Fi, marker='', color='blue', linewidth=2, alpha=1)
-
-                  plt.subplot(2, 1, 2)
-                  plt.ylabel('Ogiva')        
-                  plt.bar(x, pystt.Fac, align='edge', color='red', edgecolor='black', linewidth=1.1, alpha=0.5, width=pystt.AmpClasse)
-                  plt.plot(pystt.Pm, pystt.Fac, marker='', color='red', linewidth=2, alpha=1) 
-                  # Para mexer no eixo x. Testar melhor!
-                  #xmin, xmax = plt.xlim()  
-                  #plt.xlim(xmax = xmax + 20)              
-                  #plt.xlim(xmin = xmax - 20)
+    if request.method == 'POST':
+        try:
+            result = request.form   
+            pystt = Pytistica()      
+            pystt.Calcular(result["DadosBrutos"], int(result["LimiteInferior"]), int(result["AmplitudeClasse"]))
+            pystt.MontarTabelaFrequencia            
+            # Plota grafico
+            x = []
+            for li in pystt.ClasseLi:
+                  x.append(li)
             
-                  # Transforma plot em string de bytes base64 para enviar ao html      
-                  figfile = BytesIO()
-                  plt.savefig(figfile, format='png')
-                  figfile.seek(0) # Volta ao comeco do arquivo
-                  
-                  figdata_png = base64.b64encode(figfile.getvalue())
-
-                  # Limpar plt
-                  plt.gcf().clear()
-
-                  dataParsedForTable = list(pystt.Chunks(pystt.Data, 5))
-
-                  return render_template("result.html",
-                                          limiteInferior = pystt.Li,
-                                          amplitudeClasse = pystt.AmpClasse, 
-                                          tamanhoAmostra = len(pystt.Data),
-                                          dataParsedForTable = dataParsedForTable,
-                                          dataPlot = pystt.DataPlot, 
-                                          imgPlot=figdata_png.decode('utf8'))
-            except:
-                  logger.debug("Unexpected error")
+            plt.subplot(2, 1, 1)
+            #plt.title('Pytistica') 
+            plt.ylabel('Histograma')        
+            plt.bar(x, pystt.Fi, align='edge', color='blue', edgecolor='black', linewidth=1.1, alpha=0.5, width=pystt.AmpClasse)
+            plt.plot(pystt.Pm, pystt.Fi, marker='', color='blue', linewidth=2, alpha=1)            
+            plt.subplot(2, 1, 2)
+            plt.ylabel('Ogiva')        
+            plt.bar(x, pystt.Fac, align='edge', color='red', edgecolor='black', linewidth=1.1, alpha=0.5, width=pystt.AmpClasse)
+            plt.plot(pystt.Pm, pystt.Fac, marker='', color='red', linewidth=2, alpha=1) 
+            # Para mexer no eixo x. Testar melhor!
+            #xmin, xmax = plt.xlim()  
+            #plt.xlim(xmax = xmax + 20)              
+            #plt.xlim(xmin = xmax - 20)            
+            # Transforma plot em string de bytes base64 para enviar ao html      
+            figfile = BytesIO()
+            plt.savefig(figfile, format='png')
+            figfile.seek(0) # Volta ao comeco do arquivo
             
-            return render_template("home.html", errorPytistica = "Opa, dados inválidos! Não envie letras, verifique se os dados brutos possuem apenas espaços entre as amostras e também se os números reais estão com '.' ou ','.")
+            figdata_png = base64.b64encode(figfile.getvalue())          
+            # Limpar plt
+            plt.gcf().clear            
+            dataParsedForTable = list(pystt.Chunks(pystt.Data, 5))            
+            return render_template("result.html",
+                                    limiteInferior = pystt.Li,
+                                    amplitudeClasse = pystt.AmpClasse, 
+                                    tamanhoAmostra = len(pystt.Data),
+                                    dataParsedForTable = dataParsedForTable,
+                                    dataPlot = pystt.DataPlot, 
+                                    imgPlot=figdata_png.decode('utf8'))
+        except:
+            logger.debug("Unexpected error")
+
+        return render_template("home.html", errorPytistica = "Opa, dados inválidos! Não envie letras, verifique se os dados brutos possuem apenas espaços entre as amostras e também se os números reais estão com '.' ou ','.")
 
 if __name__ == '__main__':
-      app.run(debug = True, host='0.0.0.0')
+    app.run(debug = True, host='0.0.0.0', port=5001)
