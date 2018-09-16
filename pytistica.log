@@ -245,3 +245,179 @@
 09/16/2018 05:47:04 PM DEBUG IP conexao: 127.0.0.1 IP Forwarded: 127.0.0.1
 09/16/2018 05:47:11 PM DEBUG IP conexao: 127.0.0.1 IP Forwarded: 127.0.0.1
 09/16/2018 05:47:24 PM DEBUG Flask pytistica started...
+09/16/2018 06:15:24 pm DEBUG Flask pytistica started...
+09/16/2018 06:15:26 pm DEBUG Flask pytistica started...
+09/16/2018 06:15:56 pm DEBUG IP conexao: 10.9.1.17 IP Forwarded: 10.9.1.17
+09/16/2018 06:16:17 pm DEBUG Unexpected error
+09/16/2018 06:17:28 pm DEBUG Flask pytistica started...
+09/16/2018 06:17:30 pm DEBUG Flask pytistica started...
+09/16/2018 06:17:34 pm DEBUG IP conexao: 10.9.1.17 IP Forwarded: 10.9.1.17
+09/16/2018 06:17:44 pm DEBUG Unexpected error
+09/16/2018 06:19:35 pm DEBUG Flask pytistica started...
+09/16/2018 06:19:37 pm DEBUG Flask pytistica started...
+09/16/2018 06:19:54 pm DEBUG IP conexao: 10.9.1.17 IP Forwarded: 10.9.1.17
+09/16/2018 06:20:14 pm DEBUG Unexpected error
+09/16/2018 06:23:05 pm DEBUG Flask pytistica started...
+09/16/2018 06:23:07 pm DEBUG Flask pytistica started...
+09/16/2018 06:23:16 pm DEBUG IP conexao: 10.9.1.17 IP Forwarded: 10.9.1.17
+09/16/2018 06:24:21 pm DEBUG Flask pytistica started...
+09/16/2018 06:24:23 pm DEBUG Flask pytistica started...
+09/16/2018 06:24:25 pm DEBUG IP conexao: 10.9.1.17 IP Forwarded: 10.9.1.17
+09/16/2018 06:24:39 pm DEBUG Unexpected error:
+09/16/2018 06:24:39 pm DEBUG list object has no element 0
+09/16/2018 06:28:13 pm DEBUG Flask pytistica started...
+09/16/2018 06:28:15 pm DEBUG Flask pytistica started...
+09/16/2018 06:28:20 pm DEBUG IP conexao: 10.9.1.17 IP Forwarded: 10.9.1.17
+09/16/2018 06:28:34 pm DEBUG Unexpected error:
+09/16/2018 06:29:14 pm DEBUG Flask pytistica started...
+09/16/2018 06:29:16 pm DEBUG Flask pytistica started...
+09/16/2018 06:29:19 pm DEBUG IP conexao: 10.9.1.17 IP Forwarded: 10.9.1.17
+09/16/2018 06:29:26 pm DEBUG Unexpected error:
+09/16/2018 06:29:26 pm DEBUG Traceback (most recent call last):
+  File "app.py", line 84, in result
+    imgPlot=figdata_png.decode('utf8'))
+  File "/usr/lib/python2.7/dist-packages/flask/templating.py", line 128, in render_template
+    context, ctx.app)
+  File "/usr/lib/python2.7/dist-packages/flask/templating.py", line 110, in _render
+    rv = template.render(context)
+  File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 969, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 742, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/pi/pytistica/templates/result.html", line 70, in top-level template code
+    <th scope="col">{{ dataPlot[0][0] }}</th>
+  File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 378, in getitem
+    return obj[argument]
+UndefinedError: list object has no element 0
+
+09/16/2018 06:29:26 pm DEBUG list object has no element 0
+09/16/2018 06:31:03 pm DEBUG Flask pytistica started...
+09/16/2018 06:31:05 pm DEBUG Flask pytistica started...
+09/16/2018 06:31:09 pm DEBUG IP conexao: 10.9.1.17 IP Forwarded: 10.9.1.17
+09/16/2018 06:31:22 pm DEBUG Unexpected error:
+09/16/2018 06:31:22 pm DEBUG Traceback (most recent call last):
+  File "app.py", line 84, in result
+    imgPlot=figdata_png.decode('utf8'))
+  File "/usr/lib/python2.7/dist-packages/flask/templating.py", line 128, in render_template
+    context, ctx.app)
+  File "/usr/lib/python2.7/dist-packages/flask/templating.py", line 110, in _render
+    rv = template.render(context)
+  File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 969, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 742, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/pi/pytistica/templates/result.html", line 70, in top-level template code
+    <th scope="col">{{ dataPlot[1][0] }}</th>
+  File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 378, in getitem
+    return obj[argument]
+UndefinedError: list object has no element 1
+
+09/16/2018 06:31:22 pm DEBUG list object has no element 1
+09/16/2018 06:33:05 pm DEBUG Flask pytistica started...
+09/16/2018 06:33:06 pm DEBUG Flask pytistica started...
+09/16/2018 06:33:12 pm DEBUG IP conexao: 10.9.1.17 IP Forwarded: 10.9.1.17
+09/16/2018 06:33:22 pm DEBUG [[1.0, 2.0, 3.0, 4.0, 5.0], [6.0]]
+09/16/2018 06:33:22 pm DEBUG Unexpected error:
+09/16/2018 06:33:22 pm DEBUG Traceback (most recent call last):
+  File "app.py", line 85, in result
+    imgPlot=figdata_png.decode('utf8'))
+  File "/usr/lib/python2.7/dist-packages/flask/templating.py", line 128, in render_template
+    context, ctx.app)
+  File "/usr/lib/python2.7/dist-packages/flask/templating.py", line 110, in _render
+    rv = template.render(context)
+  File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 969, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 742, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/pi/pytistica/templates/result.html", line 70, in top-level template code
+    <th scope="col">{{ dataPlot[1][0] }}</th>
+  File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 378, in getitem
+    return obj[argument]
+UndefinedError: list object has no element 1
+
+09/16/2018 06:33:22 pm DEBUG list object has no element 1
+09/16/2018 06:37:03 pm DEBUG IP conexao: 10.9.1.17 IP Forwarded: 10.9.1.17
+09/16/2018 06:37:17 pm DEBUG [[1.0, 2.0, 3.0, 4.0, 5.0]]
+09/16/2018 06:37:17 pm DEBUG Unexpected error:
+09/16/2018 06:37:17 pm DEBUG Traceback (most recent call last):
+  File "app.py", line 85, in result
+    imgPlot=figdata_png.decode('utf8'))
+  File "/usr/lib/python2.7/dist-packages/flask/templating.py", line 128, in render_template
+    context, ctx.app)
+  File "/usr/lib/python2.7/dist-packages/flask/templating.py", line 110, in _render
+    rv = template.render(context)
+  File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 969, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 742, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/pi/pytistica/templates/result.html", line 70, in top-level template code
+    <th scope="col">{{ dataPlot[1][0] }}</th>
+  File "/usr/lib/python2.7/dist-packages/jinja2/environment.py", line 378, in getitem
+    return obj[argument]
+UndefinedError: list object has no element 1
+
+09/16/2018 06:37:17 pm DEBUG list object has no element 1
+09/16/2018 06:38:38 pm DEBUG [[1.0, 2.0, 3.0, 4.0, 5.0], [6.0]]
+09/16/2018 06:39:02 pm DEBUG IP conexao: 10.9.1.17 IP Forwarded: 10.9.1.17
+09/16/2018 06:39:16 pm DEBUG [[1.0, 2.0, 3.0, 4.0, 5.0]]
+09/16/2018 06:39:34 pm DEBUG Flask pytistica started...
+09/16/2018 06:39:36 pm DEBUG Flask pytistica started...
+09/16/2018 06:39:50 pm DEBUG IP conexao: 10.9.1.17 IP Forwarded: 10.9.1.17
+09/16/2018 06:40:05 pm DEBUG [[1.0, 2.0, 3.0, 4.0, 5.0]]
+09/16/2018 06:40:15 pm DEBUG IP conexao: 10.9.1.17 IP Forwarded: 10.9.1.17
+09/16/2018 06:40:33 pm DEBUG [[2000.0, 2100.0, 2100.0, 2150.0, 2300.0], [2400.0, 2647.0]]
+09/16/2018 06:40:51 pm DEBUG [[1.0, 2.0, 3.0, 4.0, 5.0]]
+09/16/2018 06:41:31 pm DEBUG [[2000.0, 2100.0, 2100.0, 2150.0, 2300.0], [2400.0, 2647.0]]
+09/16/2018 06:43:31 pm DEBUG Flask pytistica started...
+09/16/2018 06:43:33 pm DEBUG Flask pytistica started...
+09/16/2018 06:43:37 pm DEBUG IP conexao: 10.9.1.17 IP Forwarded: 10.9.1.17
+09/16/2018 06:43:50 pm DEBUG Unexpected error:
+09/16/2018 06:43:50 pm DEBUG Traceback (most recent call last):
+  File "app.py", line 49, in result
+    plt = matplotlib.pyplot()
+TypeError: 'module' object is not callable
+
+09/16/2018 06:43:50 pm DEBUG 'module' object is not callable
+09/16/2018 06:46:11 PM DEBUG Flask pytistica started...
+09/16/2018 06:46:13 PM DEBUG Flask pytistica started...
+09/16/2018 06:46:15 PM DEBUG IP conexao: 10.9.1.17 IP Forwarded: 10.9.1.17
+09/16/2018 06:46:28 pm DEBUG [[1.0, 2.0, 3.0, 4.0, 5.0], [6.0, 7.0, 8.0, 9.0]]
+09/16/2018 06:46:40 pm DEBUG IP conexao: 10.9.1.17 IP Forwarded: 10.9.1.17
+09/16/2018 06:46:53 pm DEBUG [[10.0, 11.0, 12.0, 13.0, 14.0]]
+09/16/2018 06:51:37 PM DEBUG Flask pytistica started...
+09/16/2018 06:51:38 PM DEBUG Flask pytistica started...
+09/16/2018 06:51:40 PM DEBUG IP conexao: 10.9.1.17 IP Forwarded: 10.9.1.17
+09/16/2018 06:51:56 pm DEBUG [[11.0, 12.0, 13.0, 14.0, 15.0], [16.0, 17.0, 18.0, 19.0]]
+09/16/2018 06:52:02 pm DEBUG [[11.0, 12.0, 13.0, 14.0, 15.0], [16.0, 17.0, 18.0, 19.0]]
+09/16/2018 06:52:14 pm DEBUG [[10.0, 11.0, 12.0, 13.0, 14.0]]
+09/16/2018 06:52:52 pm DEBUG IP conexao: 10.9.1.17 IP Forwarded: 10.9.1.17
+09/16/2018 06:53:38 pm DEBUG [[51.0, 51.0, 52.0, 52.0, 60.0], [61.0, 62.0, 63.0, 67.0, 70.0], [70.0, 71.0, 71.0, 71.0, 72.0], [72.0, 73.0, 73.0, 74.0, 81.0], [81.0, 82.0, 83.0, 84.0, 88.0], [92.0, 92.0, 94.0]]
+09/16/2018 06:55:07 PM DEBUG Flask pytistica started...
+09/16/2018 06:55:09 PM DEBUG Flask pytistica started...
+09/16/2018 06:55:11 PM DEBUG IP conexao: 10.9.1.17 IP Forwarded: 10.9.1.17
+09/16/2018 06:55:28 pm DEBUG [[51.0, 51.0, 52.0, 52.0, 60.0], [61.0, 62.0, 63.0, 67.0, 70.0], [70.0, 71.0, 71.0, 71.0, 72.0], [72.0, 73.0, 73.0, 74.0, 81.0], [81.0, 82.0, 83.0, 84.0, 88.0], [92.0, 92.0, 94.0]]
+09/16/2018 06:55:32 pm DEBUG IP conexao: 10.9.1.17 IP Forwarded: 10.9.1.17
+09/16/2018 06:55:42 pm DEBUG [[51.0, 51.0, 52.0, 52.0, 60.0], [61.0, 62.0, 63.0, 67.0, 70.0], [70.0, 71.0, 71.0, 71.0, 72.0], [72.0, 73.0, 73.0, 74.0, 81.0], [81.0, 82.0, 83.0, 84.0, 88.0], [92.0, 92.0, 94.0]]
+09/16/2018 06:57:06 PM DEBUG Flask pytistica started...
+09/16/2018 06:57:07 PM DEBUG Flask pytistica started...
+09/16/2018 06:57:10 PM DEBUG IP conexao: 10.9.1.17 IP Forwarded: 10.9.1.17
+09/16/2018 06:57:23 pm DEBUG Unexpected error:
+09/16/2018 06:57:23 pm DEBUG Traceback (most recent call last):
+  File "app.py", line 49, in result
+    pystt.Calcular(result["DadosBrutos"], int(result["LimiteInferior"]), int(result["AmplitudeClasse"]))
+  File "/home/pi/pytistica/pytistica.py", line 71, in Calcular
+    self.Data.append(float(b))
+ValueError: could not convert string to float: 
+
+09/16/2018 06:57:23 pm DEBUG could not convert string to float: 
+09/16/2018 06:57:39 pm DEBUG [[1.0, 2.0, 3.0, 4.0, 5.0], [6.0, 7.0, 8.0, 9.0]]
+09/16/2018 06:57:54 pm DEBUG Unexpected error:
+09/16/2018 06:57:54 pm DEBUG Traceback (most recent call last):
+  File "app.py", line 49, in result
+    pystt.Calcular(result["DadosBrutos"], int(result["LimiteInferior"]), int(result["AmplitudeClasse"]))
+  File "/home/pi/pytistica/pytistica.py", line 71, in Calcular
+    self.Data.append(float(b))
+ValueError: could not convert string to float: 
+
+09/16/2018 06:57:54 pm DEBUG could not convert string to float: 
+09/16/2018 06:58:42 pm DEBUG [[1.0, 2.0, 3.0, 4.0, 5.0], [6.0, 8.0]]

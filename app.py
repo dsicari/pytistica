@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# Tracar linha erro na exception
+import traceback
 # Classe Pytistica
 from pytistica import Pytistica
 # Componentes flask
@@ -5,7 +8,6 @@ from flask import Flask, render_template, request, send_file, make_response, red
 # Nao utilizar cache
 from nocache import nocache
 # Matplot
-import matplotlib.pyplot as plt
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 # String de bytes
@@ -33,8 +35,8 @@ app = Flask(__name__)
 
 @app.route('/pytistica')
 def home():
-      logger.debug('IP conexao: ' + request.environ['REMOTE_ADDR'] + ' IP Forwarded: ' + request.environ.get('HTTP_X_REAL_IP', request.remote_addr))
-      return render_template('home.html')
+    logger.debug('IP conexao: ' + request.environ['REMOTE_ADDR'] + ' IP Forwarded: ' + request.environ.get('HTTP_X_REAL_IP', request.remote_addr))
+    return render_template('home.html')
 
 @app.route('/result', methods = ['POST'])
 #@nocache # Para nao utilizar cache
@@ -43,6 +45,7 @@ def result():
         try:
             result = request.form   
             pystt = Pytistica()      
+            import matplotlib.pyplot as plt
             pystt.Calcular(result["DadosBrutos"], int(result["LimiteInferior"]), int(result["AmplitudeClasse"]))
             pystt.MontarTabelaFrequencia            
             # Plota grafico
@@ -70,8 +73,11 @@ def result():
             
             figdata_png = base64.b64encode(figfile.getvalue())          
             # Limpar plt
-            plt.gcf().clear            
+            plt.gcf().clear
+            plt.close('all')            
+
             dataParsedForTable = list(pystt.Chunks(pystt.Data, 5))            
+            logger.debug(dataParsedForTable)
             return render_template("result.html",
                                     limiteInferior = pystt.Li,
                                     amplitudeClasse = pystt.AmpClasse, 
@@ -79,10 +85,12 @@ def result():
                                     dataParsedForTable = dataParsedForTable,
                                     dataPlot = pystt.DataPlot, 
                                     imgPlot=figdata_png.decode('utf8'))
-        except:
-            logger.debug("Unexpected error")
+        except Exception, e:
+            logger.debug("Unexpected error:")
+            logger.debug(traceback.format_exc())
+            logger.debug(e)
 
-        return render_template("home.html", errorPytistica = "Opa, dados inválidos! Não envie letras, verifique se os dados brutos possuem apenas espaços entre as amostras e também se os números reais estão com '.' ou ','.")
+        return render_template("home.html", errorPytistica = "Opa, dados invalidos! Nao envie letras, verifique se os dados brutos possuem apenas espacos entre as amostras e tambem se os numeros reais estao com '.' ou ','.")
 
 if __name__ == '__main__':
     app.run(debug = True, host='0.0.0.0', port=5001)
