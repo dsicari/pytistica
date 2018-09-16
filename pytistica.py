@@ -1,146 +1,159 @@
-import sys
 from terminaltables import AsciiTable
-import matplotlib.pyplot as plt
 
-n = 0
-data = []
-nClasses = 0
-ampClasse = 0
-Li = 0
+class Pytistica:
 
-while True:
-    print("PYTISTICA - TAB FREQ, HISTOGRAMA, OGIVAS E MUITA DIVERSAO")
-    print("[I] Inserir dados brutos")
-    print("[A] Calcular") 
-    print("[Q] Sair")
-    
-    opcao = str(input())
-    
-    if(opcao == "Q"):
-        sys.exit()
-    elif(opcao == "A"):
-        data.sort()
-        
-            
-        print("Limite inferior: ")
-        Li = int(input())
-        print("Amplitude classe: ")
-        ampClasse = int(input())
+    def Chunks(self, l, n):
+        """Yield successive n-sized chunks from l."""
+        for i in range(0, len(l), n):
+            yield l[i:i + n]
 
-        
-        # Qtde classe se dara pelo incremento da amplitude ate que o ultimo item de data esteja dentro da faixa
-        #print("Qtde classes: ")
-        #nClasses = int(input())
-        somaClasse = Li
-        nClasses = 0
+    def Erase(self):
+        self.N = 0
+        self.Data = []
+        self.NClasses = 0
+        self.AmpClasse = 0
+        self.Li = 0
+        self.CountClass = 0
+        self.ClasseLi = []
+        self.ClasseLs = []
+        self.Pm = []
+        self.Classes = []        
+        self.Fi = []
+        self.Fr = []
+        self.Frp = []
+        self.Fac = []
+        self.Frac = []
+        self.Fracp = []
+        self.NClasses = 0
+        self.SumFi = 0
+        self.SumFr = 0
+        self.DataPlot = []
+        self.SomaClasse = 0
+        self.Data = []
+        self.N = 0
+        self.Li = 0
+        self.AmpClasse = 0
+        self.Data.sort()
+        self.SomaClasse = 0
+        self.DataPlot = []
+
+    def Calcular(self, bruto, li, ampClasse):        
+
+        self.N = 0
+        self.Data = []
+        self.NClasses = 0
+        self.AmpClasse = 0
+        self.Li = 0
+        self.CountClass = 0
+        self.ClasseLi = []
+        self.ClasseLs = []
+        self.Pm = []
+        self.Classes = []        
+        self.Fi = []
+        self.Fr = []
+        self.Frp = []
+        self.Fac = []
+        self.Frac = []
+        self.Fracp = []
+        self.NClasses = 0
+        self.SumFi = 0
+        self.SumFr = 0
+        self.DataPlot = []
+        self.SomaClasse = 0
+
+        bruto = bruto.replace(',','.')
+        bruto = bruto.replace('\r',' ')
+        bruto = bruto.replace('\n','')
+        bruto = bruto.replace('\t','')
+        bruto = bruto.split(' ')
+        self.Data = []
+        for b in bruto:         
+            self.Data.append(float(b))
+
+        self.N = len(self.Data)
+        self.Li = li
+        self.AmpClasse = ampClasse
+        self.Data.sort()
+        self.SomaClasse = self.Li
+
         while True:
-            somaClasse = somaClasse + ampClasse
-            if(data[-1] > somaClasse):
-                nClasses = nClasses + 1
+            self.SomaClasse = self.SomaClasse + self.AmpClasse
+            if(self.Data[-1] > self.SomaClasse):
+                self.NClasses = self.NClasses + 1
             else:
-                nClasses = nClasses + 1
+                self.NClasses = self.NClasses + 1
                 break
-        
-        print("Quantidade classe(s): " + str(nClasses))
-
-        print("ROL: " + str(data))
-        
-        countClass = 0
-        classeLi = []
-        classeLs = []
-        pm = []
-        classes = []        
-        fi = []
-        fr = []
-        frp = []
-        fac = []
-        frac = []
-        fracp = []
 
         # Calcula limites classes
-        for i in range(0, nClasses):
-            classeLi.append(Li + countClass * ampClasse)
-            countClass += 1
-            classeLs.append(Li + countClass * ampClasse)
+        for i in range(0, self.NClasses):
+            self.ClasseLi.append(self.Li + self.CountClass * self.AmpClasse)
+            self.CountClass += 1
+            self.ClasseLs.append(self.Li + self.CountClass * self.AmpClasse)
         
         # Calcula ponto medio
-        for p in range(0, nClasses):
-            pm.append((classeLi[p] + classeLs[p])/2)
+        for p in range(0, self.NClasses):
+            self.Pm.append((self.ClasseLi[p] + self.ClasseLs[p])/2)
         
         # Cria classes de frequencia 
-        for i in range(0, nClasses):
-            classes.append(str(classeLi[i]) + " |--- " + str(classeLs[i]))
+        for i in range(0, self.NClasses):
+            self.Classes.append(str(self.ClasseLi[i]) + " |--- " + str(self.ClasseLs[i]))
 
         # Calcula fi
-        for c in classeLi:
-            ocorrencia = 0
-            for d in data:
-                if(d>=c and d<(c+ampClasse)):
-                    ocorrencia += 1
-            fi.append(ocorrencia)
+        for c in self.ClasseLi:
+            self.Ocorrencia = 0
+            for d in self.Data:
+                if(d>=c and d<(c+self.AmpClasse)):
+                    self.Ocorrencia += 1
+            self.Fi.append(self.Ocorrencia)
         
         # Calcula fr
-        for f in fi:
-            x = f/n
-            x = float("%0.4f"%x)
-            fr.append(x)
-            x = x * 100
-            frp.append(x)
+        for f in self.Fi:
+            self.x = f/self.N
+            self.x = float("%0.4f"%self.x)
+            self.Fr.append(self.x)
+            self.x = self.x * 100
+            self.Frp.append(self.x)        
         
-        sumFi = 0
         # Calcula fac
-        for f in fi:
-            sumFi = sumFi + f
-            fac.append(sumFi)
-
-        sumFr = 0
+        for f in self.Fi:
+            self.SumFi = self.SumFi + f
+            self.Fac.append(self.SumFi)
+        
         # Calcula frac
-        for f in fr:
-            sumFr = sumFr + f
-            frac.append(sumFr)
+        for f in self.Fr:
+            self.SumFr = self.SumFr + f
+            self.Frac.append(self.SumFr)
 
         # Calcula fracp
-        for f in frac:
-            fracp.append(f*100)
+        for f in self.Frac:
+            self.Fracp.append(f*100)
+    
+    def MontarTabelaFrequencia(self):
+        if not self.Fi:
+            return False
+        # Plota tabela
+        self.DataPlot = []
+        self.DataPlot.append(['Classe', 'Pm', 'Fi', 'Fr', 'Fr%', 'Fac', 'Frac', 'Frac%'])
+        for i in range(0, self.NClasses):
+            self.DataPlot.append([self.Classes[i], str(float(("%0.2f"%self.Pm[i]))), 
+                                         str(self.Fi[i]), 
+                                         str(float(("%0.4f"%self.Fr[i]))), 
+                                         str(float(("%0.2f"%self.Frp[i]))), 
+                                         str(float(("%0.2f"%self.Fac[i]))),
+                                         str(float(("%0.4f"%self.Frac[i]))),
+                                         str(float(("%0.2f"%self.Fracp[i])))])     
+        #self.Table = AsciiTable(self.DataPlot)
+        #print(self.Table.table) 
 
-        # Printa tabela
-        dataPlot = []
-        dataPlot.append(['Classes', 'Pm', 'Fi', 'Fr', 'Fr%', 'Fac', 'Frac', 'Frac%'])
-        for i in range(0, nClasses):
-            dataPlot.append([classes[i], str(float(("%0.2f"%pm[i]))), 
-                                         str(fi[i]), 
-                                         str(float(("%0.4f"%fr[i]))), 
-                                         str(float(("%0.2f"%frp[i]))), 
-                                         str(float(("%0.2f"%fac[i]))),
-                                         str(float(("%0.4f"%frac[i]))),
-                                         str(float(("%0.2f"%fracp[i])))])     
-        table = AsciiTable(dataPlot)
-        print(table.table)  
+"""
+pystt = Pytistica()
+bruto = "2000 2012 2034 2345 2456 2546 2678 2390 2908 2512 2999"
+li = 2000
+ampClasse = 100
+pystt.Calcular(bruto, li, ampClasse)
+pystt.MontarTabelaFrequencia()
+print(pystt.DataPlot)
 
-        # Plota grafico
-        x = []
-        for li in classeLi:
-            x.append(li)        
-
-        plt.subplot(2, 1, 1)
-        plt.title('Pytistica') 
-        plt.ylabel('Histograma')        
-        plt.bar(x, fi, align='edge', color='blue', edgecolor='black', linewidth=1.1, alpha=0.5, width=ampClasse)
-        plt.plot(pm, fi, marker='', color='blue', linewidth=4, alpha=1)#,label='Poligono de frequencia')
-
-        plt.subplot(2, 1, 2)
-        plt.ylabel('Ogiva')        
-        plt.bar(x, fac, align='edge', color='red', edgecolor='black', linewidth=1.1, alpha=0.5, width=ampClasse)
-        plt.plot(pm, fac, marker='', color='red', linewidth=4, alpha=1)
-                       
-        plt.show()
-     
-    elif(opcao == "I"):
-        print("Insira os dados brutos, separados por espaco")
-        bruto = str(input())
-        bruto = bruto.split(' ')
-        for b in bruto:
-            data.append(int(b))
-        print("Dados brutos: " + str(data))
-        n = len(data)
-        print("Tamanho amostra (n): " + str(len(data)))
+Table = AsciiTable(pystt.DataPlot)
+print(Table.table) 
+"""

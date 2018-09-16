@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <style>
+            h1{
+                height: 60px;
+                color: white;
+                background-color: #212529;
+            }
+            body{
+                text-align: center;
+            }
+            input, textarea { 
+                text-align: center; 
+            }
+            .error{
+                color: red;
+            }
+        </style>
+    </head>
+   <body>   
+        <h1>Pytistica</h1>
+        <div class="error">
+            <p>{{ errorPytistica }}</p>
+        </div>
+        <form action = "http://localhost:5000/result" method = "POST">
+            <div class="form-group">
+                <label class="form-control-lg">Dados brutos separados por espaço</label>
+                <div class="container">
+                    <textarea name = "DadosBrutos" class="form-control form-control-lg" rows="8" placeholder="101.3 123.5 115,9 119.45 99.9 97.8 103,6"></textarea>
+                </div>
+                
+                <label class="form-control-lg">Limite inferior</label>
+                <div class="container">
+                    <input type="text" class="form-control form-control-lg" placeholder="95" name="LimiteInferior">
+                </div>
+
+
+                <label class="form-control-lg">Amplitude Classe</label>
+                <div class="container">
+                    <input type="text" class="form-control form-control-lg" placeholder="3" name="AmplitudeClasse">
+                </div>
+                <br><br>
+                <button type="submit" class="btn btn-dark btn-lg">Submit</button>
+            </div>
+        </form>  
+    </body>
+</html>

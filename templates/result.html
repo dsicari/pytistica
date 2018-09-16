@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <style>
+            h1{
+                height: 60px;
+                color: white;
+                background-color: #212529;
+            }
+            body{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+
+        <h1>Pytistica</h1>
+
+        <h2>Dados</h2>
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Propriedade</th>
+                    <th scope="col">Variável</th>
+                    <th scope="col">Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tamanho amostra</td>
+                    <td>n</td>
+                    <td>{{ tamanhoAmostra }}</td>
+                </tr>
+                <tr>
+                    <td>Limite Inferior</td>
+                    <td>Li</td>
+                    <td>{{ limiteInferior }}</td>                    
+                </tr>
+                <tr>
+                    <td>Amplitude Classe</td>
+                    <td>haClasse</td>
+                    <td>{{ amplitudeClasse }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+
+        <h2>ROL</h2>
+        <table class="table">  
+            <tbody>       
+                {% for dt in dataParsedForTable %}         
+                <tr>
+                    {% for d in dt %}
+                        <td> {{ d }} </td>
+                    {% endfor %}
+                </tr>            
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <br>
+
+        <h2>Tabela Frequência</h2>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">{{ dataPlot[0][0] }}</th>
+                    <th scope="col">{{ dataPlot[0][1] }}</th>
+                    <th scope="col">{{ dataPlot[0][2] }}</th>
+                    <th scope="col">{{ dataPlot[0][3] }}</th>
+                    <th scope="col">{{ dataPlot[0][4] }}</th>
+                    <th scope="col">{{ dataPlot[0][5] }}</th>
+                    <th scope="col">{{ dataPlot[0][6] }}</th>
+                    <th scope="col">{{ dataPlot[0][7] }}</th>
+                    <th scope="col">{{ dataPlot[0][8] }}</th>                 
+                </tr>
+            </thead>
+            <tbody>                
+                {% for dp in dataPlot[1:] %}
+                    <tr>
+                        {% for i in dp %}                        
+                            <td> {{ i }} </td>                        
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>        
+
+        <br>
+
+        <h2>Histograma e Ogiva</h2>
+        <div class="container"></div>
+            <div class="col-sm"></div>                
+            <div class="col-sm">
+                <img src="data:image/png;base64,{{ imgPlot }}" alt="">
+            </div>
+            <div class="col-sm"></div>   
+        </div>
+
+        <a href="http://localhost:5000"><button type="submit" class="btn btn-dark btn-lg">Novo calculo</button></a>
+        <br><br>
+
+   </body>
+</html>
