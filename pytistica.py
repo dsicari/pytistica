@@ -60,13 +60,16 @@ class Pytistica:
         self.SumFr = 0
         self.DataPlot = []
         self.SomaClasse = 0
+        self.Data = []
 
+	#print('Dados brutos capturados: ' + bruto)
         bruto = bruto.replace(',','.')
         bruto = bruto.replace('\r',' ')
         bruto = bruto.replace('\n','')
         bruto = bruto.replace('\t','')
-        self.Data = []
-        print('Dados brutos capturados: ' + bruto)
+        bruto = map(str, bruto.split(' '))
+        #print('Dados brutos capturados lista: ' + str(bruto))        
+        
         for b in bruto:         
             if(b != ' '):
                 try:
@@ -75,11 +78,13 @@ class Pytistica:
                     print('Fail to convert str to float')
                     print('Str: {' + b +'}')
 
-        self.N = len(self.Data)
-        self.Li = li
-        self.AmpClasse = ampClasse
         self.Data.sort()
-        self.SomaClasse = self.Li
+        #print(self.Data)
+
+        self.N = len(self.Data)	
+        self.Li = float(li.replace(',','.'))
+        self.AmpClasse = float(ampClasse.replace(',','.'))        
+        self.SomaClasse = self.Li        
 
         while True:
             self.SomaClasse = self.SomaClasse + self.AmpClasse
@@ -113,8 +118,8 @@ class Pytistica:
         
         # Calcula fr
         for f in self.Fi:
-            self.x = f/self.N
-            self.x = float("%0.4f"%self.x)
+            self.x = float(f)/float(self.N)
+            self.x = float(("%0.4f"%self.x))
             self.Fr.append(self.x)
             self.x = self.x * 100
             self.Frp.append(self.x)        

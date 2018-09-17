@@ -43,10 +43,11 @@ def home():
 def result(): 
     if request.method == 'POST':
         try:
-            result = request.form   
+            result = request.form
+            logger.debug('Result POST: ' + str(result))   
             pystt = Pytistica()      
             import matplotlib.pyplot as plt
-            pystt.Calcular(result["DadosBrutos"], int(result["LimiteInferior"]), int(result["AmplitudeClasse"]))
+            pystt.Calcular(result["DadosBrutos"], result["LimiteInferior"], result["AmplitudeClasse"])
             pystt.MontarTabelaFrequencia()            
             # Plota grafico
             x = []
@@ -82,7 +83,7 @@ def result():
             return render_template("result.html",
                                     limiteInferior = pystt.Li,
                                     amplitudeClasse = pystt.AmpClasse, 
-                                    tamanhoAmostra = len(pystt.Data),
+                                    tamanhoAmostra = pystt.N,
                                     dataParsedForTable = dataParsedForTable,
                                     dataPlot = pystt.DataPlot, 
                                     imgPlot=figdata_png.decode('utf8'))
