@@ -1,6 +1,8 @@
 # pytistica
 Pytistica, onde tabelas de frequência, histogramas e ogivas são construídas com Python.
 
+Acesse: www.dsicari.com.br/pytistica
+
 $$ Deixe sua duvida em ISSUES, nos ajude com seu PULL REQUEST e entre em contato para expandirmos esse trem: danilo.sicari@fatec.sp.gov.br / denadai.sicari@gmail.com $$
 
 Para utilizar, baixe este repositorio ou use: git clone https://github.com/dsicari/pytistica
